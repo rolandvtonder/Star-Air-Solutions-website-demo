@@ -1,0 +1,159 @@
+@import 'tailwindcss';
+
+/* Star Air Solution: the logo's cold-to-hot cycle. Deep navy and electric
+   blue for the cold arrow, signal red for the hot one, frost and paper for
+   the light surfaces. */
+@theme {
+  --color-ink: #061631;
+  --color-navy: #0b2a6b;
+  --color-blue: #0a6fc2;
+  --color-sky: #2fa3e0;
+  --color-frost: #e6f1fb;
+  --color-paper: #f6f8fb;
+  --color-red: #e31e24;
+  --color-ember: #a3141a;
+  --color-steel: #5b6b84;
+
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-sans: 'Barlow', system-ui, sans-serif;
+
+  --ease-silk: cubic-bezier(0.2, 0.7, 0.1, 1);
+  --ease-wipe: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+html {
+  background: var(--color-ink);
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  background: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+}
+::selection {
+  background: var(--color-sky);
+  color: var(--color-ink);
+}
+:focus-visible {
+  outline: 3px solid var(--color-sky);
+  outline-offset: 3px;
+}
+a,
+button {
+  touch-action: manipulation;
+}
+button:not(:disabled),
+[role='button'] {
+  cursor: pointer;
+}
+
+/* In the components layer so utility classes (normal-case, leading-*, tracking-*) can override them. */
+@layer components {
+/* Heavy condensed capitals, tight; italic lines lean out and lighten. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: 0.9;
+}
+.display .it {
+  font-style: italic;
+  font-weight: 500;
+}
+/* Small capitals with wide tracking, for labels and buttons. */
+.caps {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.lede {
+  font-size: clamp(17px, 1.35vw, 20px);
+  line-height: 1.6;
+}
+}
+
+/* Scroll reveals: rise and fade in once, the first time they're seen. */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.9s var(--ease-silk),
+    transform 0.9s var(--ease-silk);
+  transition-delay: var(--d, 0s);
+}
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Slow push-in on the hero photos: the still-photo stand-in for a film. */
+@keyframes kenburns {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.16) translate3d(-1.5%, -1%, 0);
+  }
+}
+.kenburns {
+  animation: kenburns 9s linear both;
+}
+
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation: grain 0.6s steps(3) infinite;
+}
+@keyframes grain {
+  0% { transform: translate3d(0, 0, 0); }
+  33% { transform: translate3d(-3%, 2%, 0); }
+  66% { transform: translate3d(2%, -3%, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+/* Endless client strip on the home page. */
+@keyframes marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+.marquee-wrap:hover .marquee,
+.marquee-wrap:focus-within .marquee {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain,
+  .kenburns,
+  .marquee {
+    animation: none;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
