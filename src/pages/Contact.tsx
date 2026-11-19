@@ -2,6 +2,7 @@ import {useEffect, useRef, useState, type FormEvent, type ReactNode} from 'react
 import {brand, contact, contactPage, mapsLink, tel, whatsapp} from '../content';
 import {Eyebrow} from '../components/Heading';
 import {PageHero} from '../components/PageHero';
+import {ServiceAreas} from '../components/ServiceAreas';
 import {useReveals} from '../hooks/useReveals';
 
 type Field = 'name' | 'phone' | 'email' | 'area' | 'property' | 'service' | 'message';
@@ -244,6 +245,8 @@ export function Contact() {
           </div>
         </div>
       </section>
+
+      <ServiceAreas n="03" />
     </div>
   );
 }

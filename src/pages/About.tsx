@@ -4,6 +4,7 @@ import {Eyebrow} from '../components/Heading';
 import {PageHero} from '../components/PageHero';
 import {Photo} from '../components/Photo';
 import {QuoteBand} from '../components/QuoteBand';
+import {ServiceAreas} from '../components/ServiceAreas';
 import {useReveals} from '../hooks/useReveals';
 
 export function About() {
@@ -108,6 +109,8 @@ export function About() {
           </div>
         </div>
       </section>
+
+      <ServiceAreas n="05" />
 
       <QuoteBand />
     </div>

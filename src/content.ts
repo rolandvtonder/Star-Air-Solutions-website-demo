@@ -239,4 +239,18 @@ export const captions: Record<string, string> = {
   'p-wa-2026-11-18-at-20-25-35': 'Outdoor units installed across a building facade',
 };
 
+/**
+ * Areas we travel to: the Pietermaritzburg base plus towns where the company
+ * profile lists completed projects. Add or remove places here.
+ */
+export const areas = {
+  lines: [{t: 'We come'}, {t: 'to you.', i: true}] as Line[],
+  body: 'Based in Pietermaritzburg, our teams travel across KwaZulu-Natal and the Eastern Cape for installations, maintenance and repairs.',
+  regions: [
+    {name: 'KwaZulu-Natal', places: ['Pietermaritzburg', 'Durban', 'Umhlanga', 'Umlazi']},
+    {name: 'Eastern Cape', places: ['Mthatha & Qunu', 'Mbizana', 'Lusikisiki', 'Libode', 'Mqanduli']},
+  ],
+  note: 'Not on the list? Call us — we regularly travel further for larger jobs.',
+};
+
 export const footerNote = `© 2026 ${brand.legal} · Reg. No ${brand.reg}`;
