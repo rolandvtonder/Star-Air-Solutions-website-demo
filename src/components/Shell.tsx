@@ -75,11 +75,14 @@ export function Shell({page, children}: {page: PageId; children: ReactNode}) {
         Skip to content
       </a>
 
-      <a href={url('/')} aria-label={`${brand.name} — home`} className="fixed top-4 left-4 z-[55] flex items-center gap-3 md:top-6 md:left-10">
-        <span className="grid size-12 place-items-center rounded-xl bg-white shadow-[0_6px_24px_rgb(0_0_0/0.25)] md:size-14">
-          <img src={url('media/logo-mark.png')} alt="" width={256} height={235} className="w-[78%]" />
-        </span>
-        <span className="display text-[20px] leading-[0.95] tracking-[0.06em] text-white mix-blend-difference max-sm:hidden md:text-[22px]">
+      {/* Logo and name together in one white badge, readable on any background and screen size. */}
+      <a
+        href={url('/')}
+        aria-label={`${brand.name} — home`}
+        className="fixed top-4 left-4 z-[55] flex h-12 items-center gap-2 rounded-xl bg-white pr-4 pl-1.5 shadow-[0_6px_24px_rgb(0_0_0/0.25)] md:top-6 md:left-10 md:h-14 md:gap-2.5 md:pr-5 md:pl-2"
+      >
+        <img src={url('media/logo-mark.png')} alt="" width={256} height={235} className="h-10 w-auto md:h-11" />
+        <span className="display text-[17px] leading-[0.92] tracking-[0.04em] text-ink md:text-[20px]">
           Star Air
           <br />
           Solution
