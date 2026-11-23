@@ -66,7 +66,15 @@ export function Footer() {
           Star Air Solution
         </span>
       </div>
-      <p className="caps mx-auto mt-6 max-w-[1680px] text-white/50">{footerNote}</p>
+      <div className="caps mx-auto mt-6 flex max-w-[1680px] flex-col gap-2 text-white/50 md:flex-row md:justify-between">
+        <p>{footerNote}</p>
+        <p>
+          Website by{' '}
+          <a href="https://rolandwebdesign.co.za" target="_blank" rel="noreferrer" className="normal-case text-white/75 underline-offset-4 hover:text-sky hover:underline">
+            rolandwebdesign.co.za
+          </a>
+        </p>
+      </div>
     </footer>
   );
 }
